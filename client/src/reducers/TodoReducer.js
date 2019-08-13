@@ -1,9 +1,12 @@
+import * as moment from 'moment';
+
 export const initialState = {
     todo: [
         {
             item: 'Learn about reducers',
             completed: false,
-            id: Date.now()
+            id: Date.now(),
+            dueDate: moment().endOf('day').fromNow()
         }
     ]
 }
@@ -16,7 +19,7 @@ export const todoReducer = (state, action) => {
         case 'ADD_TODO':
             return {
                 ...state,
-                    todo: [...state.todo, {item: action.payload, completed: false, id: Date.now()}]
+                    todo: [...state.todo, {item: action.payload, completed: false, id: Date.now(), dueDate: moment().endOf('day').fromNow()}]
             }
         case 'TOGGLE_ITEM':
             return {   
