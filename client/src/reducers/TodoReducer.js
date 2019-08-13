@@ -7,6 +7,9 @@ export const initialState = {
         }
     ]
 }
+// let arr = [1,2,3]
+// arr = [0,4, 5, ...arr, 6,7]
+// console.log(arr)
 
 export const todoReducer = (state, action) => {
     switch(action.type) {

@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
@@ -8,7 +8,11 @@ function App() {
   const [todoList, dispatch] = useReducer(todoReducer, initialState);
 
 const addToList = taskName => {
-  dispatch({type: 'ADD_TODO', payload: taskName})
+  if (taskName !== '') {
+    dispatch({type: 'ADD_TODO', payload: taskName})
+  } else {
+    return taskName
+  }
   
 }
 
@@ -30,7 +34,4 @@ const clearCompleted = () => {
   );
 }
 
-
 export default App;
-
-// toggleClick={toggleClick}
